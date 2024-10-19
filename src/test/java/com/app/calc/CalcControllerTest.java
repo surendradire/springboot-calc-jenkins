@@ -73,7 +73,7 @@ class CalcControllerTest {
                 .andExpect(model().attribute("result", 42.0));
     }
 
-  
+  // This has been commented.
     /*
     @Test
     void testDivideOperation() throws Exception {
