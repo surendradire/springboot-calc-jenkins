@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		 <maven.tomcat.port>9090</maven.tomcat.port>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -52,7 +53,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 	</build>
 
