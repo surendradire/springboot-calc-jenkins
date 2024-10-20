@@ -25,10 +25,10 @@ class CalcServiceTest {
         assertEquals(42, result, "Multiplication result should be 42");
     }
 
-    @Test
+    @Test //fail this test
     void testDivide() {
         double result = objCalcService.divide(20, 4);
-        assertEquals(5, result, "Division result should be 5");
+        assertEquals(5, result, "Division result should be 10");
     }
 
     @Test
