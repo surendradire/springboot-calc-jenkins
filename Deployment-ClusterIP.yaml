@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-app-deployment
+  labels:
+    app: calc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: calc
+  template:
+    metadata:
+      labels:
+        app: calc
+    spec:
+      containers:
+        - name: calc-container
+          image: surendradockerid19/calc-image:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calc-service
+spec:
+  type: ClusterIP
+  selector:
+    app: calc
+  ports:
+    - protocol: TCP
+      port: 90
+      targetPort: 8080
+
+
+
+#    ACCESS The APPLICATION :
+#    ======================
+#    kubectl port-forward service/calc-service 9090:90
+#    http://localhost:9090
+
+#    kubectl exec -i -t c<pod-name> --container <container-name> -- /bin/bash
+#    curl http://calc-service:90   OR
+#    curl http://<ip of service>:90
+
+#    minikube service calc-service [ only in minikube ]

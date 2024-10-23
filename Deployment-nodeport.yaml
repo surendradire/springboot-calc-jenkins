@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-app-deployment
+  labels:
+    app: calc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: calc
+  template:
+    metadata:
+      labels:
+        app: calc
+    spec:
+      containers:
+        - name: calc-container
+          image: surendradockerid19/calc-image:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calc-service
+spec:
+  type: NodePort
+  selector:
+    app: calc
+  ports:
+    - protocol: TCP
+      port: 90
+      targetPort: 8080
+      nodePort: 30008
+
+
+#    ACCESS The APPLICATION :
+#    =======================
+#    minikube service calc-service
+#    http://<minikube-ip>:30008  --> Tunnel --> <url>
+#    Use the tunnel URL (http://127.0.0.1:51525) provided by Minikube, as this is the correct way to access services when using the Docker driver on Windows. Check on linux systems ?

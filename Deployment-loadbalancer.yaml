@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calc-app-deployment
+  labels:
+    app: calc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: calc
+  template:
+    metadata:
+      labels:
+        app: calc
+    spec:
+      containers:
+        - name: calc-container
+          image: surendradockerid19/calc-image:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calc-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: calc
+  ports:
+    - protocol: TCP
+      port: 90
+      targetPort: 8080
+      nodePort: 30008
