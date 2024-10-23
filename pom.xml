@@ -12,7 +12,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>calc</name>
 	<description>Demo project for Spring Boot for Arithmetic Operations</description>
-	<packaging>war</packaging> <!-- Changed to WAR -->
+	<packaging>jar</packaging> <!-- Changed to WAR -->
 
 	<properties>
 		<java.version>17</java.version>
